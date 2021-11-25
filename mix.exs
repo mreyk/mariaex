@@ -20,15 +20,16 @@ defmodule Mariaex.Mixfile do
 
   # Configuration for the OTP application
   def application do
-    [applications: [:logger, :crypto, :decimal, :db_connection]]
+    [applications: [:logger, :crypto, :decimal, :db_connection],
+    extra_applications: [:ssl]]
   end
 
   defp deps do
-    [{:decimal, "~> 1.2"},
-     {:db_connection, "~> 2.0"},
-     {:coverex, "~> 1.4.10", only: :test},
-     {:ex_doc, ">= 0.0.0", only: :dev},
-     {:poison, ">= 0.0.0", optional: true}]
+    [{:decimal, "~> 2.0.0"},
+     {:db_connection, "~> 2.4.1"},
+     {:coverex, "~> 1.5.0", only: :test},
+     {:ex_doc, "~> 0.23.0", only: :dev},
+     {:poison, github: "mreyk/poison", branch: "fix_3.1.0", override: true, optional: true}]
   end
 
   defp description do

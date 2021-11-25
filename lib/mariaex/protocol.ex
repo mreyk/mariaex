@@ -1104,7 +1104,7 @@ defmodule Mariaex.Protocol do
   end
 
   defp bxor_binary(b1, b2) do
-    (for {e1, e2} <- List.zip([:erlang.binary_to_list(b1), :erlang.binary_to_list(b2)]), do: e1 ^^^ e2) |> :erlang.list_to_binary
+    (for {e1, e2} <- List.zip([:erlang.binary_to_list(b1), :erlang.binary_to_list(b2)]), do: Bitwise.bxor(e1, e2)) |> :erlang.list_to_binary
   end
 
   def mysql_old_password(password, salt) do
